@@ -6,266 +6,153 @@
   <title>Dimensional Scripture</title>
   <meta name="description" content="When Physics Meets Prophecy. A research-driven exploration of consciousness, dimensional reality, and the biblical text." />
 
-  <!-- Social preview -->
-  <meta property="og:title" content="Dimensional Scripture" />
-  <meta property="og:description" content="When Physics Meets Prophecy. A research-driven exploration of consciousness, dimensional reality, and the biblical text." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://dimensionalscripture.com" />
-
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <style>
-    :root{
-      --bg:#050508;
-      --panel:#0b0b12;
-      --border:#24243a;
-      --text:#f2f2f6;
-      --muted:#c6c6d4;
-      --accent:#9ecbff;
-      --accent2:#2f5cff;
-      --radius:16px;
-      --shadow: 0 22px 70px rgba(0,0,0,.55);
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, sans-serif;
+      background: #050508;
+      color: #f2f2f6;
     }
-    *{ box-sizing:border-box; }
-    body{
-      margin:0;
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color:var(--text);
-      background:
-        radial-gradient(1200px 600px at 12% 8%, rgba(47,92,255,.18), transparent 55%),
-        radial-gradient(900px 520px at 85% 18%, rgba(158,203,255,.12), transparent 55%),
-        var(--bg);
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 64px 24px;
     }
-    a{ color:var(--accent); text-decoration:none; }
-    a:hover{ text-decoration:underline; }
-
-    .wrap{ max-width:1100px; margin:0 auto; padding:26px 18px 72px; }
-
-    .topbar{
-      display:flex; justify-content:space-between; align-items:center;
-      padding:10px 0 26px; gap:12px;
-    }
-    .brand{
+    h1, h2 {
       font-family: Cinzel, serif;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      font-weight:700;
-      font-size:13px;
-      opacity:.95;
     }
-    .pill{
-      display:inline-flex; gap:10px; align-items:center;
-      border:1px solid var(--border);
-      background: rgba(11,11,18,.55);
-      padding:10px 12px;
-      border-radius:999px;
-      color:var(--muted);
-      font-size:13px;
-      backdrop-filter: blur(10px);
+    h1 {
+      font-size: 48px;
+      margin-bottom: 12px;
     }
-    .dot{
-      width:8px; height:8px; border-radius:999px;
-      background:#53ff9b; box-shadow:0 0 18px rgba(83,255,155,.55);
+    h2 {
+      margin-top: 64px;
+      font-size: 28px;
     }
-
-    .hero{
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap:20px;
-      align-items:stretch;
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+      color: #cfcfd8;
+      max-width: 800px;
     }
-
-    .card{
-      border:1px solid var(--border);
-      background: rgba(11,11,18,.62);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      position:relative;
+    .hero {
+      margin-bottom: 48px;
     }
-
-    .heroLeft{ padding:30px; }
-    .kicker{
-      font-family: Cinzel, serif;
-      color:var(--accent);
-      letter-spacing:.09em;
-      text-transform:uppercase;
-      font-size:12px;
-      margin:0 0 10px;
+    .tagline {
+      color: #9ecbff;
+      font-size: 20px;
+      margin-bottom: 24px;
     }
-    h1{
-      font-family: Cinzel, serif;
-      font-size:52px;
-      line-height:1.05;
-      margin:0 0 12px;
-      letter-spacing:-0.01em;
-    }
-    .tagline{
-      font-size:18px;
-      color:var(--muted);
-      line-height:1.6;
-      margin:0 0 18px;
-      max-width: 62ch;
-    }
-    .bullets{
-      margin:16px 0 0;
-      padding:0;
-      list-style:none;
-      display:grid;
-      gap:10px;
-    }
-    .bullets li{
-      display:flex; gap:10px;
-      color:var(--muted);
-      line-height:1.5;
-      font-size:15px;
-    }
-    .bullets li span{
-      width:10px; height:10px; margin-top:6px; border-radius:3px;
-      background: linear-gradient(180deg, var(--accent), var(--accent2));
-      box-shadow:0 0 18px rgba(47,92,255,.25);
-      flex:0 0 auto;
-    }
-
-    .actions{
-      display:flex; flex-wrap:wrap; gap:12px; margin-top:22px;
-    }
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding:12px 14px;
-      border-radius:12px;
-      border:1px solid var(--border);
-      background: rgba(11,11,18,.60);
-      color:var(--text);
-      font-weight:600;
-      font-size:14px;
-    }
-    .btnPrimary{
-      border-color: rgba(47,92,255,.65);
-      background: linear-gradient(180deg, rgba(47,92,255,.95), rgba(47,92,255,.55));
-    }
-
-    .heroRight{
-      display:grid; grid-template-rows: 1fr 1fr; gap:20px;
-      padding:20px;
-      background: rgba(11,11,18,.40);
-    }
-    .imgCard{
-      border-radius:14px;
-      overflow:hidden;
-      border:1px solid var(--border);
-      position:relative;
-      min-height:220px;
-    }
-    .imgCard img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-      transform: scale(1.02);
-    }
-    .imgOverlay{
-      position:absolute; inset:0;
-      background: linear-gradient(180deg, rgba(5,5,8,.05), rgba(5,5,8,.72));
-      pointer-events:none;
-    }
-    .imgCaption{
-      position:absolute; left:14px; right:14px; bottom:12px;
-      font-size:13px; color: rgba(242,242,246,.9);
-      text-shadow:0 8px 18px rgba(0,0,0,.65);
-    }
-
-    .section{
-      margin-top:26px;
-      padding:22px;
-      border:1px solid var(--border);
-      border-radius: var(--radius);
-      background: rgba(11,11,18,.52);
-      box-shadow: 0 18px 55px rgba(0,0,0,.28);
-    }
-    .section h2{
-      font-family: Cinzel, serif;
-      font-size:22px;
-      margin:0 0 10px;
-    }
-    .section p{
-      margin:0;
-      color:var(--muted);
-      line-height:1.6;
-      font-size:16px;
-      max-width: 86ch;
-    }
-
-    footer{
-      margin-top:54px;
-      color:#8f8fa3;
-      font-size:12px;
-      text-align:left;
-    }
-
-    @media (max-width: 920px){
-      .hero{ grid-template-columns: 1fr; }
-      .heroRight{ grid-template-rows:auto; }
-      h1{ font-size:40px; }
+    footer {
+      margin-top: 80px;
+      font-size: 13px;
+      color: #8f8fa3;
     }
   </style>
 </head>
 
 <body>
   <div class="wrap">
-    <div class="topbar">
-      <div class="brand">Dimensional Scripture</div>
-      <div class="pill"><span class="dot"></span> Manuscript in development</div>
-    </div>
 
-    <div class="hero">
-      <div class="card heroLeft">
-        <p class="kicker">When physics meets prophecy</p>
-        <h1>Dimensional Scripture</h1>
-        <p class="tagline">
-          A research-driven exploration of consciousness, dimensional reality, and the biblical text.
-          Built on primary sources, not vibes.
-        </p>
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <h1>What if Scripture was describing reality more accurately than modern materialism?</h1>
 
-        <ul class="bullets">
-          <li><span></span><div><strong>Core question:</strong> What if Scripture is dimensional language describing real phenomena?</div></li>
-          <li><span></span><div><strong>Method:</strong> Cross-read Scripture with physics, consciousness research, and documented sources.</div></li>
-          <li><span></span><div><strong>Goal:</strong> A coherent framework that respects both belief and evidence.</div></li>
-        </ul>
+      <div class="tagline">When Physics Meets Prophecy</div>
 
-        <div class="actions">
-          <a class="btn btnPrimary" href="mailto:hello@dimensionalscripture.com">Get updates</a>
-          <a class="btn" href="#about">Read the thesis</a>
-        </div>
-      </div>
-
-      <div class="card heroRight">
-        <div class="imgCard">
-          <img src="assets/hero.jpg" alt="Dimensional Scripture hero image" />
-          <div class="imgOverlay"></div>
-          <div class="imgCaption">A layered reality, hiding in plain sight.</div>
-        </div>
-        <div class="imgCard">
-          <img src="assets/secondary.jpg" alt="Dimensional Scripture secondary image" />
-          <div class="imgOverlay"></div>
-          <div class="imgCaption">Scripture as description. Science as late arrival.</div>
-        </div>
-      </div>
-    </div>
-
-    <div id="about" class="section">
-      <h2>The thesis</h2>
       <p>
-        Dimensional Scripture argues that modern materialism cannot account for consciousness or the
-        full range of human experience. It proposes that Scripture contains a consistent worldview
-        of layered reality, and that modern research increasingly echoes what the text already assumes.
+        <strong>Dimensional Scripture</strong> is a research-driven examination of consciousness,
+        dimensional reality, and the biblical text.
       </p>
-    </div>
 
-    <footer>© 2025 Dimensional Scripture. All rights reserved.</footer>
+      <p>
+        It begins from a simple premise: ancient authors were not inventing myth or speaking only in metaphor.
+        They were describing real experiences and real phenomena using the language available to them.
+      </p>
+
+      <p>
+        Modern science is only now approaching questions Scripture assumed from the beginning.
+        Consciousness. Non-local reality. Information beyond space and time.
+      </p>
+    </section>
+
+    <!-- WHO THIS IS FOR -->
+    <section>
+      <h2>Who This Is For</h2>
+
+      <p>
+        This project is for readers who feel boxed in by the false choice between faith without evidence
+        and science without meaning.
+      </p>
+
+      <p>
+        It is for those who sense that materialism fails to explain consciousness, experience, or history,
+        but who are unwilling to replace it with superstition, self-help spirituality, or vague mysticism.
+      </p>
+
+      <h2>Who This Is Not For</h2>
+
+      <p>
+        This is not devotional writing.  
+        This is not New Age spirituality.  
+        This is not metaphor-only theology.  
+        This is not entertainment disguised as revelation.
+      </p>
+
+      <p>
+        <em>Dimensional Scripture</em> is an argument, built from sources, patterns, and documented research.
+      </p>
+    </section>
+
+    <!-- THESIS -->
+    <section>
+      <h2>The Thesis</h2>
+
+      <p>
+        <em>Dimensional Scripture</em> argues that strict materialism cannot account for consciousness
+        or the full range of human experience.
+      </p>
+
+      <p>
+        It proposes that the biblical text reflects a consistent worldview of layered reality,
+        and that modern physics, neuroscience, and declassified research increasingly echo assumptions
+        the text already contains.
+      </p>
+
+      <p>
+        This project does not attempt to prove theology with science.
+        It examines where their descriptions converge.
+      </p>
+    </section>
+
+    <!-- STATUS -->
+    <section>
+      <h2>Status</h2>
+
+      <p>
+        The manuscript is in active development.
+      </p>
+
+      <p>
+        This site exists to document that process, release selected essays and research notes,
+        and prepare for publication.
+      </p>
+
+      <p>
+        Early readers and serious critics are welcome.
+      </p>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      © Dimensional Scripture. Research project and forthcoming publication.
+    </footer>
+
   </div>
 </body>
 </html>
