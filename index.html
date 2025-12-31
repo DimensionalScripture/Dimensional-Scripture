@@ -59,6 +59,38 @@
       border-radius: 16px;
       box-shadow: 0 24px 60px rgba(0,0,0,.55);
     }
+    
+    /* SIMPLE SOCIAL MEDIA BLOCK */
+#social{
+  margin-top: 72px;
+}
+
+.social-simple{
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.social-simple a{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border: 1px solid #24243a;
+  border-radius: 14px;
+  background: rgba(11,11,18,.55);
+  color: #f2f2f6;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.social-simple a img{
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
 
     footer {
       margin-top: 96px;
@@ -183,6 +215,26 @@
       </p>
       
     </section>
+
+    <section id="social">
+  <h2>Follow the Work</h2>
+
+  <div class="social-simple">
+    <a href="https://substack.com/@adanestorwc?utm_source=share&utm_medium=android&r=mzw1v"
+       target="_blank"
+       rel="noopener">
+      <img src="assets/substack.jpg" alt="Substack">
+      <span>Read on Substack</span>
+    </a>
+
+    <a href="https://x.com/DimScripture"
+       target="_blank"
+       rel="noopener">
+      <img src="assets/x.jpg" alt="X">
+      <span>Follow on X</span>
+    </a>
+  </div>
+</section>
 
     <!-- FOOTER -->
     <footer>
