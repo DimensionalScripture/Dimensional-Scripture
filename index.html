@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Dimensional Scripture</title>
-  <meta name="description" content="When Physics Meets Prophecy. A research-driven exploration of consciousness, dimensional reality, and the biblical text."/>
+  <meta name="description" content="When Physics Meets Prophecy. A research-driven exploration of consciousness, dimensional reality, and the biblical text." />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -12,316 +12,406 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <style>
-    body {
-      margin: 0;
-      font-family: Inter, system-ui, sans-serif;
-      background: #050508;
-      color: #f2f2f6;
+    :root{
+      --bg:#050508;
+      --panel: rgba(10,10,16,.60);
+      --panel2: rgba(10,10,16,.72);
+      --border: rgba(255,255,255,.10);
+      --text:#f2f2f6;
+      --muted:#cfcfd8;
+      --muted2:#9fa0b3;
+      --accent:#d6b15f;
+      --accent2:#9ecbff;
+      --shadow: 0 22px 70px rgba(0,0,0,.55);
+      --radius: 18px;
     }
-    .wrap {
-      max-width: 1100px;
+
+    *{ box-sizing:border-box; }
+    html, body{ height:100%; }
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background: var(--bg);
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    a:hover{ text-decoration:none; }
+
+    .container{
+      max-width: 1120px;
       margin: 0 auto;
-      padding: 64px 24px;
+      padding: 0 18px;
     }
-    h1, h2 {
+
+    /* Top nav */
+    .nav{
+      position: fixed;
+      top:0; left:0; right:0;
+      z-index: 50;
+      background: rgba(5,5,8,.55);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .navInner{
+      height: 64px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 12px;
       font-family: Cinzel, serif;
+      font-weight: 700;
+      letter-spacing: .02em;
+      font-size: 22px;
+      color: var(--accent);
     }
-    h1 {
-      font-size: 48px;
-      margin-bottom: 12px;
+    .brandIcon{
+      width: 22px;
+      height: 22px;
+      display:inline-block;
+      opacity: .95;
     }
-    h2 {
-      margin-top: 72px;
-      font-size: 28px;
+
+    .navRight{
+      display:flex;
+      align-items:center;
+      gap: 10px;
     }
-    p {
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(10,10,16,.55);
+      color: var(--muted2);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(10,10,16,.55);
+      color: var(--text);
+      font-weight: 600;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+    .btnPrimary{
+      border-color: rgba(214,177,95,.45);
+      background: linear-gradient(180deg, rgba(214,177,95,.95), rgba(214,177,95,.55));
+      color: #121215;
+    }
+    .btnGhost{
+      background: rgba(10,10,16,.35);
+    }
+
+    /* Hero */
+    .hero{
+      min-height: 100vh;
+      padding-top: 64px; /* nav offset */
+      position: relative;
+      overflow: hidden;
+    }
+
+    .heroBg{
+      position:absolute;
+      inset: 0;
+      background-image: url("/assets/hero.jpg");
+      background-size: cover;
+      background-position: center;
+      filter: saturate(1.08) contrast(1.05);
+      transform: scale(1.02);
+    }
+    .heroOverlay{
+      position:absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(5,5,8,.35) 0%, rgba(5,5,8,.82) 58%, rgba(5,5,8,1) 100%),
+        radial-gradient(900px 520px at 20% 20%, rgba(158,203,255,.12), transparent 60%),
+        radial-gradient(900px 520px at 80% 30%, rgba(214,177,95,.10), transparent 60%);
+    }
+
+    .heroContent{
+      position: relative;
+      z-index: 2;
+      padding: 88px 0 72px;
+      display:flex;
+      justify-content:center;
+      text-align:center;
+    }
+
+    .heroCard{
+      width: 100%;
+      max-width: 860px;
+      border: 1px solid var(--border);
+      background: rgba(10,10,16,.55);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px 20px 26px;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(10,10,16,.62);
+      color: var(--muted2);
+      font-size: 13px;
+      margin-bottom: 18px;
+    }
+    .spark{
+      width: 10px; height: 10px;
+      border-radius: 999px;
+      background: #53ff9b;
+      box-shadow: 0 0 18px rgba(83,255,155,.55);
+    }
+
+    h1{
+      margin: 0 0 10px;
+      font-family: Cinzel, serif;
+      font-weight: 700;
+      font-size: clamp(38px, 5vw, 64px);
+      line-height: 1.03;
+      color: var(--accent);
+      text-shadow: 0 10px 30px rgba(0,0,0,.55);
+    }
+
+    .heroLine{
+      margin: 0 auto 16px;
+      max-width: 56ch;
+      color: var(--text);
       font-size: 18px;
       line-height: 1.6;
-      color: #cfcfd8;
-      max-width: 800px;
-    }
-    .hero {
-      margin-bottom: 64px;
-    }
-    .tagline {
-      color: #9ecbff;
-      font-size: 20px;
-      margin-bottom: 24px;
     }
 
-    /* IMAGE STYLES */
-    .hero-image,
-    .section-image {
-      width: 100%;
+    .heroSub{
+      margin: 0 auto 22px;
+      max-width: 70ch;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .heroActions{
+      display:flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content:center;
+      margin-top: 10px;
+    }
+
+    /* Sections */
+    section.block{
+      padding: 26px 0;
+    }
+
+    .card{
+      border: 1px solid var(--border);
+      background: rgba(10,10,16,.55);
+      border-radius: var(--radius);
+      box-shadow: 0 18px 55px rgba(0,0,0,.28);
+      padding: 22px;
       max-width: 900px;
-      display: block;
-      margin: 32px auto;
-      border-radius: 16px;
-      box-shadow: 0 24px 60px rgba(0,0,0,.55);
+      margin: 0 auto;
     }
-    
-    /* SIMPLE SOCIAL MEDIA BLOCK */
-#social{
-  margin-top: 72px;
-}
 
-.social-simple{
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-  margin-top: 16px;
-}
+    .kicker{
+      font-family: Cinzel, serif;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      font-size: 12px;
+      margin: 0 0 10px;
+    }
 
-.social-simple a{
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 16px;
-  border: 1px solid #24243a;
-  border-radius: 14px;
-  background: rgba(11,11,18,.55);
-  color: #f2f2f6;
-  font-weight: 600;
-  font-size: 14px;
-  text-decoration: none;
-}
+    h2{
+      font-family: Cinzel, serif;
+      margin: 0 0 10px;
+      font-size: 26px;
+      color: var(--text);
+    }
 
-.social-simple a img{
-  width: 24px;
-  height: 24px;
-  object-fit: contain;
-}
+    p{
+      margin: 0 0 12px;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 16px;
+    }
 
-    footer {
-      margin-top: 96px;
+    /* Social block */
+    .social-simple{
+      display:flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+    .social-simple a{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: rgba(10,10,16,.55);
+      color: var(--text);
+      font-weight: 700;
+      font-size: 14px;
+    }
+    .social-simple img{
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+    }
+
+    footer{
+      padding: 46px 0 60px;
+      color: var(--muted2);
       font-size: 13px;
-      color: #8f8fa3;
+      text-align:center;
     }
-    /* AUTHOR BIO */
-.author-card{
-  margin-top: 72px;
-  max-width: 900px;
-  border: 1px solid #24243a;
-  border-radius: 16px;
-  padding: 22px;
-  background: rgba(11,11,18,.52);
-  box-shadow: 0 18px 55px rgba(0,0,0,.28);
-}
 
-.author-kicker{
-  font-family: Cinzel, serif;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: #9ecbff;
-  font-size: 12px;
-  margin: 0 0 10px;
-}
-
-.author-name{
-  font-family: Cinzel, serif;
-  font-size: 26px;
-  margin: 0 0 10px;
-}
-
-.author-text{
-  margin: 0;
-  color: #cfcfd8;
-  line-height: 1.6;
-  font-size: 16px;
-}
-    /* LATEST WRITING */
-.latest-card{
-  margin-top: 32px;
-  max-width: 900px;
-  border: 1px solid #24243a;
-  border-radius: 16px;
-  padding: 22px;
-  background: rgba(11,11,18,.52);
-  box-shadow: 0 18px 55px rgba(0,0,0,.28);
-}
-
-.latest-title{
-  font-family: Cinzel, serif;
-  font-size: 22px;
-  margin: 0 0 10px;
-}
-
-.latest-text{
-  margin: 0 0 14px;
-  color: #cfcfd8;
-  line-height: 1.6;
-  font-size: 16px;
-}
-
-.latest-actions{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-}
+    @media (max-width: 680px){
+      .pill{ display:none; }
+      .heroCard{ padding: 18px 16px 22px; }
+    }
   </style>
 </head>
 
 <body>
-  <div class="wrap">
+  <!-- NAV -->
+  <header class="nav">
+    <div class="container">
+      <div class="navInner">
+        <div class="brand">
+          <span class="brandIcon">📖</span>
+          <span>Dimensional Scripture</span>
+        </div>
 
-    <!-- HERO SECTION -->
-    <section class="hero">
-      <h1>What if Scripture was describing reality more accurately than modern materialism?</h1>
+        <div class="navRight">
+          <span class="pill">When Physics Meets Prophecy</span>
+          <a class="btn btnGhost" href="#about">Learn More</a>
+          <a class="btn btnPrimary" href="#get">Get the Book</a>
+        </div>
+      </div>
+    </div>
+  </header>
 
-      <div class="tagline">When Physics Meets Prophecy, Everything Changes</div>
+  <!-- HERO -->
+  <main class="hero">
+    <div class="heroBg"></div>
+    <div class="heroOverlay"></div>
 
-      <!-- HERO IMAGE -->
-      <img
-        src="assets/hero.jpg"
-        alt="Dimensional Scripture — layered reality and ancient text"
-        class="hero-image"
-      />
+    <div class="container heroContent">
+      <div class="heroCard">
+        <div class="badge"><span class="spark"></span> Manuscript in development</div>
 
-      <p>
-        <strong>Dimensional Scripture</strong> is a research-driven examination of consciousness,
-        dimensional reality, and the biblical text.
-      </p>
+        <h1>Dimensional Scripture</h1>
 
-      <p>
-        It begins from a simple premise: ancient authors were not inventing myth or speaking only in metaphor.
-        They were describing real experiences and real phenomena using the language available to them.
-      </p>
+        <p class="heroLine">
+          What if Scripture was describing reality more accurately than modern materialism?
+        </p>
 
-      <p>
-        Modern science is only now approaching questions Scripture assumed from the beginning.
-        Consciousness. Non-local reality. Information beyond space and time.
-      </p>
+        <p class="heroSub">
+          A research-driven examination of consciousness, dimensional reality, and the biblical text.
+          Built on sources and argument, not spiritual marketing.
+        </p>
+
+        <div class="heroActions">
+          <a class="btn btnPrimary" href="#get">Get the Book</a>
+          <a class="btn" href="#about">Learn More</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section id="about" class="block">
+      <div class="card">
+        <div class="kicker">The thesis</div>
+        <h2>Scripture, read as description</h2>
+        <p>
+          This project argues that strict materialism cannot account for consciousness or the full range of human experience.
+          It proposes that the biblical text reflects a consistent worldview of layered reality, and that modern research
+          increasingly echoes assumptions the text already contains.
+        </p>
+        <p>
+          This does not attempt to prove theology with science. It examines where their descriptions converge.
+        </p>
+      </div>
     </section>
 
-    <!-- WHO THIS IS FOR -->
-    <section>
-      <h2>Who This Is For</h2>
-
-      <p>
-        This project is for readers who feel boxed in by the false choice between faith without evidence
-        and science without meaning.
-      </p>
-
-      <p>
-        It is for those who sense that materialism fails to explain consciousness, experience, or history,
-        but who are unwilling to replace it with superstition, self-help spirituality, or vague mysticism.
-      </p>
-
-      <h2>Who This Is Not For</h2>
-
-      <p>
-        This is not devotional writing.  
-        This is not New Age spirituality.  
-        This is not metaphor-only theology.  
-        This is not entertainment disguised as revelation.
-      </p>
-
-      <p>
-        <em>Dimensional Scripture</em> is an argument, built from sources, patterns, and documented research.
-      </p>
+    <!-- AUTHOR -->
+    <section id="author" class="block">
+      <div class="card">
+        <div class="kicker">About the author</div>
+        <h2>Ada Nestor</h2>
+        <p>
+          Ada Nestor is an independent writer and radio host focused on narrative, institutions, and the collisions
+          between lived experience and official explanations. <em>Dimensional Scripture</em> is her work-in-progress manuscript
+          examining consciousness, dimensional reality, and the biblical text through a research-driven lens.
+        </p>
+      </div>
     </section>
 
-    <!-- THESIS -->
-    <section>
-      <h2>The Thesis</h2>
-
-      <p>
-        <em>Dimensional Scripture</em> argues that strict materialism cannot account for consciousness
-        or the full range of human experience.
-      </p>
-
-      <p>
-        It proposes that the biblical text reflects a consistent worldview of layered reality,
-        and that modern physics, neuroscience, and declassified research increasingly echo assumptions
-        the text already contains.
-      </p>
-
-      <p>
-        This project does not attempt to prove theology with science.
-        It examines where their descriptions converge.
-      </p>
-
-      <!-- SUPPORTING IMAGE -->
-      <img
-        src="assets/secondary.jpg"
-        alt="Scripture, physics, and dimensional symbolism"
-        class="section-image"
-      />
+    <!-- LATEST -->
+    <section id="latest" class="block">
+      <div class="card">
+        <div class="kicker">Latest writing</div>
+        <h2>Follow the work as it evolves</h2>
+        <p>
+          While much of my publicly published work has leaned political, this project comes from a different place.
+          <em>Dimensional Scripture</em> reflects questions and lines of inquiry I have been preoccupied with for years,
+          independent of current events. As the manuscript develops, I publish excerpts, research notes, and exploratory essays
+          on Substack.
+        </p>
+        <div class="social-simple">
+          <a href="https://substack.com/@adanestorwc?utm_source=share&utm_medium=android&r=mzw1v" target="_blank" rel="noopener">
+            <img src="/assets/substack.jpg" alt="Substack">
+            Read on Substack
+          </a>
+          <a href="https://x.com/DimScripture" target="_blank" rel="noopener">
+            <img src="/assets/x.jpg" alt="X">
+            Follow on X
+          </a>
+        </div>
+      </div>
     </section>
 
-    <!-- STATUS -->
-    <section>
-      <h2>Status</h2>
-
-      <p>
-        The manuscript is in active development.
-      </p>
-
-      <p>
-        This site exists to document that process, release selected essays and research notes,
-        and prepare for publication.
-      </p>
-
-      <p>
-        Early readers and serious critics are welcome.
-      </p>
-    </section>
-    
-<!-- ABOUT THE AUTHOR -->
-    <section>
-      <h2>About the Author</h2>
-     
-<p>Ada Nestor is an independent writer and radio host focused on narrative, institutions, and the
-    collisions between lived experience and official explanations. <em>Dimensional Scripture</em>
-    is her work-in-progress manuscript examining consciousness, dimensional reality, and the biblical
-    text through a research-driven lens.</p>
-      
+    <!-- GET THE BOOK -->
+    <section id="get" class="block">
+      <div class="card">
+        <div class="kicker">Get the book</div>
+        <h2>Coming soon</h2>
+        <p>
+          This page will be updated with release details, purchase links, and early-reader material as the manuscript approaches publication.
+        </p>
+        <div class="heroActions" style="justify-content:flex-start;">
+          <a class="btn btnPrimary" href="https://x.com/DimScripture" target="_blank" rel="noopener">Follow for release updates</a>
+          <a class="btn" href="https://substack.com/@adanestorwc?utm_source=share&utm_medium=android&r=mzw1v" target="_blank" rel="noopener">Read updates on Substack</a>
+        </div>
+      </div>
     </section>
 
-<!-- LATEST --> 
-    <section>
-      <h2>Latest Writing</h2>
-      <p>While much of my publicly published work has leaned political, this project comes from a different place.
-  <em>Dimensional Scripture</em> reflects questions and lines of inquiry I have been preoccupied with for years,
-  independent of current events. As the manuscript develops, I will publish excerpts, research notes, and
-  exploratory essays on Substack.</p>
-    </section>
-    
-    <!-- CONTACT -->
-    <section>
-      <h2>Contact the Author</h2>
-
-      <p>
-        For interviews, speaking requests, corrections, or serious critique, send an email to dimensionalscripture@gmail.com.
-      </p>
-      
-    </section>
-
-    <section id="social">
-  <h2>Follow the Work</h2>
-
-  <div class="social-simple">
-    <a href="https://substack.com/@adanestorwc?utm_source=share&utm_medium=android&r=mzw1v"
-       target="_blank"
-       rel="noopener">
-      <img src="assets/Substack.jpg">
-      <span>Read on Substack</span>
-    </a>
-
-    <a href="https://x.com/DimScripture"
-       target="_blank"
-       rel="noopener">
-      <img src="assets/X.jpg">
-      <span>Follow on X</span>
-    </a>
-  </div>
-</section>
-
-    <!-- FOOTER -->
     <footer>
       © Dimensional Scripture. Research project and forthcoming publication.
     </footer>
-
-  </div>
+  </main>
 </body>
 </html>
