@@ -292,6 +292,10 @@
       .pill{ display:none; }
       .heroCard{ padding: 18px 16px 22px; }
     }
+    /* FIX: keep hero background behind content */
+.heroBg, .heroOverlay { z-index: 0; }
+.heroContent { position: relative; z-index: 2; }
+section.block, footer { position: relative; z-index: 2; }
   </style>
 </head>
 
