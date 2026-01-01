@@ -9,7 +9,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600&family=Playfair+Script&display=swap" rel="stylesheet">
 
   <style>
     :root{
@@ -193,6 +193,16 @@
       color: var(--accent);
       text-shadow: 0 10px 30px rgba(0,0,0,.55);
     }
+
+    .scriptTitle{
+  font-family: "Playfair Script", cursive;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  font-size: clamp(52px, 7vw, 92px);
+  color: var(--accent);
+  line-height: 1.05;
+  text-shadow: 0 12px 36px rgba(0,0,0,.55);
+}
 
     .heroLine{
       margin: 0 auto 16px;
@@ -512,7 +522,7 @@ section.block, footer { position: relative; z-index: 2; }
       <div class="heroCard">
         <div class="badge"><span class="spark"></span> Manuscript in development</div>
 
-        <h1>Dimensional Scripture</h1>
+        <h1 class="scriptTitle">Dimensional Scripture</h1>
 
         <p class="heroLine">
           What if Scripture was describing reality more accurately than modern materialism?
