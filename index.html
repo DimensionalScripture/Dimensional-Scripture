@@ -9,7 +9,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600&family=Playfair+Script&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
 
   <style>
     :root{
@@ -203,7 +203,65 @@
   line-height: 1.05;
   text-shadow: 0 12px 36px rgba(0,0,0,.55);
 }
+/* Calligraphic animated hero title */
+.scriptTitle{
+  font-family: "Great Vibes", cursive;
+  font-weight: 400;
+  font-size: clamp(54px, 7.6vw, 104px);
+  line-height: 1.02;
+  letter-spacing: 0.01em;
+  color: var(--accent);
+  text-shadow: 0 16px 44px rgba(0,0,0,.60);
+  margin: 0 0 10px;
 
+  opacity: 0;
+  transform: translateY(14px) scale(0.985);
+  animation: titleReveal 900ms ease-out 120ms forwards;
+}
+
+/* Subtle “ink shimmer” highlight */
+.scriptTitle .ink{
+  background: linear-gradient(90deg,
+    rgba(214,177,95,.85) 0%,
+    rgba(255,236,190,1) 35%,
+    rgba(214,177,95,.9) 70%,
+    rgba(214,177,95,.85) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  background-size: 220% 100%;
+  animation: inkShine 1600ms ease-in-out 600ms forwards;
+}
+
+@keyframes titleReveal{
+  0%{
+    opacity: 0;
+    transform: translateY(14px) scale(0.985);
+    filter: blur(0.6px);
+  }
+  100%{
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes inkShine{
+  0%{ background-position: 0% 50%; }
+  100%{ background-position: 100% 50%; }
+}
+
+/* Respect reduced motion settings */
+@media (prefers-reduced-motion: reduce){
+  .scriptTitle, .scriptTitle .ink{
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+    
     .heroLine{
       margin: 0 auto 16px;
       max-width: 56ch;
@@ -505,9 +563,7 @@ section.block, footer { position: relative; z-index: 2; }
 </header>
 
         <div class="navRight">
-          <span class="pill">When Physics Meets Prophecy</span>
-          <a class="btn btnGhost" href="#about">Learn More</a>
-          <a class="btn btnPrimary" href="#get">Coming Soon</a>
+          
         </div>
       </div>
     </div>
@@ -522,7 +578,7 @@ section.block, footer { position: relative; z-index: 2; }
       <div class="heroCard">
         <div class="badge"><span class="spark"></span> Manuscript in development</div>
 
-        <h1 class="scriptTitle">Dimensional Scripture</h1>
+        <h1 class="scriptTitle"><span class="ink">Dimensional Scripture</h1>
 
         <p class="heroLine">
           What if Scripture was describing reality more accurately than modern materialism?
