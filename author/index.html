@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Author | Dimensional Scripture</title>
-  <meta name="description" content="Author page for Dimensional Scripture." />
+  <meta name="description" content="About the author of Dimensional Scripture." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,6 +13,7 @@
   <style>
     :root{
       --bg:#050508;
+      --panel: rgba(10,10,16,.60);
       --border: rgba(255,255,255,.10);
       --text:#f2f2f6;
       --muted:#cfcfd8;
@@ -21,8 +22,9 @@
       --accent2:#9ecbff;
       --shadow: 0 22px 70px rgba(0,0,0,.55);
       --radius: 18px;
-      --panel: rgba(10,10,16,.55);
+      --navH: 64px;
     }
+
     *{ box-sizing:border-box; }
     body{
       margin:0;
@@ -31,20 +33,21 @@
       background: var(--bg);
     }
     a{ color:inherit; text-decoration:none; }
-    a:hover{ opacity:.95; }
+    a:hover{ opacity:.97; }
 
     .container{ max-width:1120px; margin:0 auto; padding:0 18px; }
 
+    /* ---------- NAV (shared) ---------- */
     .nav{
-      position: sticky;
-      top:0;
-      z-index: 50;
-      background: rgba(5,5,8,.55);
+      position: fixed;
+      top:0; left:0; right:0;
+      z-index: 1000;
+      background: rgba(5,5,8,.75);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
     .navInner{
-      height: 64px;
+      height: var(--navH);
       display:flex;
       align-items:center;
       justify-content:space-between;
@@ -53,21 +56,15 @@
     .brand{
       display:flex;
       align-items:center;
-      gap: 12px;
+      gap: 10px;
       font-family: Cinzel, serif;
       font-weight: 700;
-      letter-spacing: .02em;
-      font-size: 22px;
+      font-size: 20px;
       color: var(--accent);
       white-space: nowrap;
     }
-    .navRight{
-      display:flex;
-      align-items:center;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
+    .navRight{ display:flex; align-items:center; gap: 10px; }
+    .navLinks{ display:flex; align-items:center; gap: 10px; }
 
     .btn{
       display:inline-flex;
@@ -89,7 +86,50 @@
       color: #121215;
     }
 
-    main{ padding: 52px 0 0; }
+    .menuBtn{
+      display:none;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(10,10,16,.55);
+      color: var(--text);
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .mobileMenu{
+      position: fixed;
+      top: calc(var(--navH) + 10px);
+      left: 12px;
+      right: 12px;
+      z-index: 999;
+      border: 1px solid var(--border);
+      background: rgba(10,10,16,.95);
+      backdrop-filter: blur(12px);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 10px;
+    }
+    .mobileItem{
+      display:block;
+      padding: 14px;
+      border-radius: 14px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .mobileItem:hover{
+      background: rgba(214,177,95,.12);
+      color: var(--accent);
+    }
+
+    @media (max-width: 860px){
+      .navLinks{ display:none; }
+      .menuBtn{ display:inline-flex; }
+    }
+
+    /* ---------- PAGE ---------- */
+    main{ padding: calc(var(--navH) + 28px) 0 0; }
 
     .card{
       border: 1px solid var(--border);
@@ -115,7 +155,7 @@
       margin: 0 0 10px;
     }
     h1{ color: var(--accent); font-size: 38px; line-height: 1.1; }
-    h2{ font-size: 22px; margin-top: 18px; }
+    h2{ font-size: 22px; margin-top: 18px; color: var(--text); }
 
     p{
       margin: 0 0 12px;
@@ -129,25 +169,27 @@
       grid-template-columns: 1fr;
       gap: 18px;
       align-items: start;
+      margin-top: 14px;
     }
+
     .portrait{
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  overflow: hidden;
-  background: rgba(10,10,16,.35);
-  aspect-ratio: 4 / 5;
-  max-width: 320px;
-  width: 100%;
-  box-shadow: 0 18px 55px rgba(0,0,0,.28);
-}
-.portrait img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-  filter: contrast(1.03) saturate(1.03);
-}
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      background: rgba(10,10,16,.35);
+      aspect-ratio: 4 / 5;
+      max-width: 320px;
+      width: 100%;
+      box-shadow: 0 18px 55px rgba(0,0,0,.28);
+    }
+    .portrait img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      filter: contrast(1.03) saturate(1.03);
+    }
 
     .social{
       display:flex;
@@ -186,6 +228,10 @@
     @media (min-width: 860px){
       .split{ grid-template-columns: 320px 1fr; }
     }
+    @media (max-width: 680px){
+      .container{ padding: 0 12px; }
+      .btn{ padding: 9px 12px; font-size: 13px; }
+    }
   </style>
 </head>
 
@@ -193,17 +239,41 @@
   <header class="nav">
     <div class="container">
       <div class="navInner">
-        <div class="brand">📖 Dimensional Scripture</div>
-        <nav class="navRight">
-          <a class="btn" href="/">Home</a>
-          <a class="btn" href="/about/">About</a>
-          <a class="btn btnPrimary" href="/author/">Author</a>
-          <a class="btn" href="/book/">Book</a>
-          <a class="btn" href="/contact/">Contact</a>
-        </nav>
+        <div class="brand">
+          <a href="/">Dimensional Scripture</a>
+        </div>
+
+        <div class="navRight">
+          <nav class="navLinks" aria-label="Primary">
+            <a class="btn" href="/">Home</a>
+            <a class="btn" href="/about/">About</a>
+            <a class="btn btnPrimary" href="/author/">Author</a>
+            <a class="btn" href="/book/">Book</a>
+            <a class="btn" href="/contact/">Contact</a>
+          </nav>
+
+          <button
+            class="menuBtn"
+            id="menuBtn"
+            aria-expanded="false"
+            aria-controls="mobileMenu"
+            aria-label="Open menu"
+            type="button"
+          >
+            ☰ Menu
+          </button>
+        </div>
       </div>
     </div>
   </header>
+
+  <nav class="mobileMenu" id="mobileMenu" hidden aria-label="Mobile">
+    <a class="mobileItem" href="/">Home</a>
+    <a class="mobileItem" href="/about/">About</a>
+    <a class="mobileItem" href="/author/">Author</a>
+    <a class="mobileItem" href="/book/">Book</a>
+    <a class="mobileItem" href="/contact/">Contact</a>
+  </nav>
 
   <main class="container">
     <section class="card">
@@ -211,44 +281,9 @@
       <h1>Ada Nestor</h1>
 
       <div class="split">
-  <div class="portrait">
-    <img src="/assets/ada.jpg" alt="Ada Nestor">
-  </div>
-
-  <div>
-    <p>
-      Ada Nestor is an independent writer and radio host focused on narrative, institutions, and the collisions
-      between lived experience and official explanations.
-    </p>
-    <p>
-      While much of her publicly published work has leaned political, <em>Dimensional Scripture</em> comes from a
-      different place: questions and lines of inquiry she has been preoccupied with for years, independent of current events.
-    </p>
-
-    <h2>Where to follow</h2>
-    <div class="social">
-      <a href="https://substack.com/@adanestorwc?utm_source=share&utm_medium=android&r=mzw1v" target="_blank" rel="noopener">
-        <img src="/assets/Substack.jpg">
-        Substack
-      </a>
-      <a href="https://x.com/DimScripture" target="_blank" rel="noopener">
-        <img src="/assets/X.jpg">
-        X
-      </a>
-    </div>
-
-    <h2>Media + interviews</h2>
-    <ul>
-      <li>Interview requests: use the Contact page.</li>
-      <li>Corrections: include source links and timestamps when possible.</li>
-      <li>Speaking: include topic, format, date range, and audience size.</li>
-    </ul>
-
-    <div style="margin-top:16px;">
-      <a class="btn btnPrimary" href="/contact/">Contact the author</a>
-    </div>
-  </div>
-</div>
+        <div class="portrait">
+          <img src="/assets/ada.jpg" alt="Ada Nestor" />
+        </div>
 
         <div>
           <p>
@@ -263,19 +298,19 @@
           <h2>Where to follow</h2>
           <div class="social">
             <a href="https://substack.com/@adanestorwc?utm_source=share&utm_medium=android&r=mzw1v" target="_blank" rel="noopener">
-              <img src="/assets/Substack.jpg" alt="Substack">
+              <img src="/assets/Substack.jpg" alt="Substack" />
               Substack
             </a>
             <a href="https://x.com/DimScripture" target="_blank" rel="noopener">
-              <img src="/assets/X.jpg" alt="X">
+              <img src="/assets/X.jpg" alt="X" />
               X
             </a>
           </div>
 
           <h2>Media + interviews</h2>
           <ul>
-            <li>Interview requests: use the contact form on the Contact page.</li>
-            <li>Corrections: send source links and timestamps when possible.</li>
+            <li>Interview requests: use the Contact page.</li>
+            <li>Corrections: include source links and timestamps when possible.</li>
             <li>Speaking: include topic, format, date range, and audience size.</li>
           </ul>
 
@@ -288,5 +323,43 @@
   </main>
 
   <footer>© Dimensional Scripture. Research project and forthcoming publication.</footer>
+
+  <script>
+    (function(){
+      const btn = document.getElementById('menuBtn');
+      const menu = document.getElementById('mobileMenu');
+      if (!btn || !menu) return;
+
+      const close = () => {
+        menu.hidden = true;
+        btn.setAttribute('aria-expanded', 'false');
+      };
+
+      const open = () => {
+        menu.hidden = false;
+        btn.setAttribute('aria-expanded', 'true');
+      };
+
+      const toggle = () => {
+        menu.hidden ? open() : close();
+      };
+
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggle();
+      });
+
+      menu.addEventListener('click', (e) => {
+        const a = e.target.closest('a');
+        if (a) close();
+      });
+
+      document.addEventListener('click', close);
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') close();
+      });
+    })();
+  </script>
 </body>
 </html>
