@@ -21,14 +21,18 @@
       --accent2:#9ecbff;
       --shadow: 0 22px 70px rgba(0,0,0,.55);
       --radius: 18px;
+      --navH: 64px;
     }
+
     *{ box-sizing:border-box; }
+
     body{
       margin:0;
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color:var(--text);
       background: var(--bg);
     }
+
     a{ color:inherit; text-decoration:none; }
 
     .container{
@@ -37,137 +41,47 @@
       padding: 0 18px;
     }
 
-    /* Top nav */
+    /* ---------- NAV ---------- */
     .nav{
-      position: sticky;
-      top:0;
-      z-index: 50;
-      background: rgba(5,5,8,.55);
+      position: fixed;
+      top:0; left:0; right:0;
+      z-index: 1000;
+      background: rgba(5,5,8,.75);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
+
     .navInner{
-      height: 64px;
+      height: var(--navH);
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap: 12px;
     }
+
     .brand{
       display:flex;
       align-items:center;
-      gap: 12px;
+      gap: 10px;
       font-family: Cinzel, serif;
       font-weight: 700;
-      letter-spacing: .02em;
-      font-size: 22px;
+      font-size: 20px;
       color: var(--accent);
       white-space: nowrap;
     }
+
     .navRight{
       display:flex;
       align-items:center;
       gap: 10px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
     }
 
-/* ---------- NAV ---------- */
+    .navLinks{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+    }
 
-.nav{
-  position: fixed;
-  top:0; left:0; right:0;
-  z-index: 1000;
-  background: rgba(5,5,8,.75);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
-}
-
-.navInner{
-  min-height: 64px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap: 12px;
-}
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap: 10px;
-  font-family: Cinzel, serif;
-  font-weight: 700;
-  font-size: 20px;
-  color: var(--accent);
-  white-space: nowrap;
-}
-
-.brand a{
-  color: inherit;
-}
-
-/* Desktop nav */
-.navRight{
-  display:flex;
-  align-items:center;
-  gap: 10px;
-}
-
-.navLinks{
-  display:flex;
-  align-items:center;
-  gap: 10px;
-}
-
-/* Mobile menu button */
-.menuBtn{
-  display:none;
-  padding: 10px 14px;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  background: rgba(10,10,16,.55);
-  color: var(--text);
-  font-weight: 700;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-/* ---------- MOBILE MENU ---------- */
-
-.mobileMenu{
-  position: fixed;
-  top: 64px;
-  left: 12px;
-  right: 12px;
-  z-index: 999;
-  border: 1px solid var(--border);
-  background: rgba(10,10,16,.95);
-  backdrop-filter: blur(12px);
-  border-radius: 18px;
-  box-shadow: var(--shadow);
-  padding: 10px;
-}
-
-.mobileItem{
-  display:block;
-  padding: 14px;
-  border-radius: 14px;
-  font-weight: 700;
-  color: var(--text);
-}
-
-.mobileItem:hover{
-  background: rgba(214,177,95,.12);
-  color: var(--accent);
-}
-
-/* ---------- RESPONSIVE ---------- */
-
-@media (max-width: 860px){
-  .navLinks{ display:none; }
-  .menuBtn{ display:inline-flex; }
-}
-    
     .btn{
       display:inline-flex;
       align-items:center;
@@ -182,206 +96,18 @@
       font-size: 14px;
       white-space: nowrap;
     }
+
     .btnPrimary{
       border-color: rgba(214,177,95,.45);
       background: linear-gradient(180deg, rgba(214,177,95,.95), rgba(214,177,95,.55));
       color: #121215;
     }
 
-    main{ padding: 52px 0 0; }
-
-    .card{
+    /* Mobile menu button */
+    .menuBtn{
+      display:none;
+      padding: 10px 14px;
+      border-radius: 999px;
       border: 1px solid var(--border);
       background: rgba(10,10,16,.55);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 24px;
-      max-width: 900px;
-      margin: 0 auto 18px;
-    }
-
-    .kicker{
-      font-family: Cinzel, serif;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: var(--accent2);
-      font-size: 12px;
-      margin: 0 0 10px;
-    }
-
-    h1, h2{
-      font-family: Cinzel, serif;
-      margin: 0 0 10px;
-    }
-    h1{
-      color: var(--accent);
-      font-size: 38px;
-      line-height: 1.1;
-    }
-    h2{
-      font-size: 22px;
-      margin-top: 18px;
       color: var(--text);
-    }
-
-    p{
-      margin: 0 0 12px;
-      color: var(--muted);
-      line-height: 1.75;
-      font-size: 16px;
-    }
-
-    ul{
-      margin: 8px 0 0 18px;
-      color: var(--muted);
-      line-height: 1.75;
-    }
-    li{ margin: 8px 0; }
-
-    footer{
-      padding: 46px 0 60px;
-      color: var(--muted2);
-      font-size: 13px;
-      text-align:center;
-    }
-
-    @media (max-width: 680px){
-      .navRight{ gap: 8px; }
-      .btn{ padding: 9px 12px; font-size: 13px; }
-    }
-  </style>
-</head>
-
-<script>
-(function(){
-  const btn = document.getElementById('menuBtn');
-  const menu = document.getElementById('mobileMenu');
-  if (!btn || !menu) return;
-
-  const close = () => {
-    menu.hidden = true;
-    btn.setAttribute('aria-expanded', 'false');
-  };
-  const toggle = () => {
-    menu.hidden ? (menu.hidden = false) : close();
-    btn.setAttribute('aria-expanded', String(!menu.hidden));
-  };
-
-  btn.addEventListener('click', e => {
-    e.stopPropagation();
-    toggle();
-  });
-
-  menu.addEventListener('click', close);
-  document.addEventListener('click', close);
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') close();
-  });
-})();
-</script>
-
-  <header class="nav">
-  <div class="container">
-    <div class="navInner">
-      <div class="brand">
-        <span class="brandIcon"></span>
-        <a href="/">Dimensional Scripture</a>
-      </div>
-
-      <div class="navRight">
-        <!-- Desktop nav -->
-        <nav class="navLinks">
-          <a class="btn" href="/">Home</a>
-          <a class="btn" href="/about/">About</a>
-          <a class="btn" href="/author/">Author</a>
-          <a class="btn" href="/book/">Book</a>
-          <a class="btn" href="/contact/">Contact</a>
-        </nav>
-
-        <!-- Mobile menu button -->
-        <button
-          class="menuBtn"
-          id="menuBtn"
-          aria-expanded="false"
-          aria-controls="mobileMenu"
-          aria-label="Open menu"
-        >
-          ☰ Menu
-        </button>
-      </div>
-    </div>
-  </div>
-</header>
-
-<!-- Mobile dropdown -->
-<nav class="mobileMenu" id="mobileMenu" hidden>
-  <a class="mobileItem" href="/">Home</a>
-  <a class="mobileItem" href="/about/">About</a>
-  <a class="mobileItem" href="/author/">Author</a>
-  <a class="mobileItem" href="/book/">Book</a>
-  <a class="mobileItem" href="/contact/">Contact</a>
-</nav>
-  <header class="nav">
-    <div class="container">
-      <div class="navInner">
-        <div class="brand">📖 Dimensional Scripture</div>
-        <nav class="navRight">
-          <a class="btn" href="/">Home</a>
-          <a class="btn btnPrimary" href="/about/">About</a>
-          <a class="btn" href="/author/">Author</a>
-          <a class="btn" href="/book/">Book</a>
-          <a class="btn" href="/contact/">Contact</a>
-        </nav>
-      </div>
-    </div>
-  </header>
-  
-<body>
-  
-
-  <main class="container">
-    <section class="card">
-      <div class="kicker">About</div>
-      <h1>What this project is</h1>
-      <p>
-        <em>Dimensional Scripture</em> is a research-driven examination of consciousness, dimensional reality, and the biblical text.
-        It begins from a simple premise: ancient authors were not inventing myth or speaking only in metaphor.
-        They were describing real experiences and real phenomena using the language available to them.
-      </p>
-      <p>
-        Modern science is only now approaching questions Scripture assumed from the beginning: consciousness,
-        non-local reality, and information beyond space and time.
-      </p>
-    </section>
-
-    <section class="card">
-      <div class="kicker">The thesis</div>
-      <h2>Scripture, read as description</h2>
-      <p>
-        This project argues that strict materialism cannot account for consciousness or the full range of human experience.
-        It proposes that the biblical text reflects a consistent worldview of layered reality, and that modern research
-        increasingly echoes assumptions the text already contains.
-      </p>
-      <p>
-        This does not attempt to prove theology with science. It examines where their descriptions converge.
-      </p>
-    </section>
-
-    <section class="card">
-      <div class="kicker">What it is not</div>
-      <h2>Clear boundaries</h2>
-      <ul>
-        <li>This is not devotional writing.</li>
-        <li>This is not New Age spirituality.</li>
-        <li>This is not “metaphor only” theology.</li>
-        <li>This is not entertainment disguised as revelation.</li>
-      </ul>
-      <p style="margin-top:12px;">
-        <em>Dimensional Scripture</em> is an argument, built from sources, patterns, and documented research.
-      </p>
-    </section>
-  </main>
-
-  <footer>© Dimensional Scripture. Research project and forthcoming publication.</footer>
-</body>
-</html>
