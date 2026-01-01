@@ -360,4 +360,409 @@
 
     .social-simple a{
       display:flex;
-      align-i
+      align-items:center;
+      gap: 10px;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: rgba(10,10,16,.55);
+      color: var(--text);
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .social-simple img{
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+    }
+
+    footer{
+      position: relative;
+      z-index: 2;
+      padding: 46px 0 60px;
+      color: var(--muted2);
+      font-size: 13px;
+      text-align:center;
+    }
+
+    /* ---------- MODAL ---------- */
+    .modal{ position: fixed; inset: 0; display:none; z-index: 1200; }
+    .modal.isOpen{ display:block; }
+
+    .modalBackdrop{
+      position:absolute; inset:0;
+      background: rgba(0,0,0,.65);
+      backdrop-filter: blur(6px);
+    }
+
+    .modalCard{
+      position: relative;
+      max-width: 560px;
+      margin: 10vh auto 0;
+      background: rgba(10,10,16,.85);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+
+    .modalHeader{
+      display:flex;
+      justify-content:space-between;
+      gap: 12px;
+      align-items:flex-start;
+    }
+
+    .modalKicker{
+      font-family: Cinzel, serif;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      font-size: 12px;
+    }
+
+    .modalTitle{
+      font-family: Cinzel, serif;
+      font-size: 22px;
+      color: var(--accent);
+      margin-top: 6px;
+    }
+
+    .modalClose{
+      border: 1px solid var(--border);
+      background: rgba(10,10,16,.55);
+      color: var(--text);
+      border-radius: 12px;
+      padding: 8px 10px;
+      cursor: pointer;
+    }
+
+    .modalText{
+      margin: 12px 0 14px;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    .modalForm{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .modalInput{
+      flex: 1 1 240px;
+      padding: 12px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(10,10,16,.55);
+      color: var(--text);
+      outline: none;
+    }
+
+    .modalSuccess{
+      margin-top: 12px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(83,255,155,.35);
+      background: rgba(83,255,155,.10);
+      color: var(--text);
+    }
+
+    @media (max-width: 680px){
+      .modalCard{ margin: 12vh 14px 0; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAV -->
+  <header class="nav">
+    <div class="container">
+      <div class="navInner">
+        <div class="brand">
+          <a href="/">Dimensional Scripture</a>
+        </div>
+
+        <div class="navRight">
+          <div class="pill">When Physics Meets Prophecy</div>
+
+          <!-- Desktop nav -->
+          <nav class="navLinks" aria-label="Primary">
+            <a class="btn" href="/about/">About</a>
+            <a class="btn" href="/author/">Author</a>
+            <a class="btn" href="/book/">Book</a>
+            <a class="btn" href="/contact/">Contact</a>
+          </nav>
+
+          <!-- Mobile menu button -->
+          <button
+            class="menuBtn"
+            id="menuBtn"
+            aria-expanded="false"
+            aria-controls="mobileMenu"
+            aria-label="Open menu"
+            type="button"
+          >
+            ☰ Menu
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile dropdown -->
+  <nav class="mobileMenu" id="mobileMenu" hidden aria-label="Mobile">
+    <a class="mobileItem" href="/about/">About</a>
+    <a class="mobileItem" href="/author/">Author</a>
+    <a class="mobileItem" href="/book/">Book</a>
+    <a class="mobileItem" href="/contact/">Contact</a>
+    <a class="mobileItem" href="#" data-open-updates>Sign up for updates</a>
+  </nav>
+
+  <!-- Updates Popup -->
+  <div id="updatesModal" class="modal" aria-hidden="true">
+    <div class="modalBackdrop" data-close="true"></div>
+
+    <div class="modalCard" role="dialog" aria-modal="true" aria-labelledby="updatesTitle">
+      <div class="modalHeader">
+        <div>
+          <div class="modalKicker">Updates</div>
+          <div id="updatesTitle" class="modalTitle">Get new excerpts + release news</div>
+        </div>
+        <button class="modalClose" type="button" data-close="true" aria-label="Close">✕</button>
+      </div>
+
+      <p class="modalText">
+        Drop your email and you’ll get periodic updates as the manuscript develops.
+        No spam. Unsubscribe any time.
+      </p>
+
+      <form id="updatesForm" class="modalForm" action="https://formspree.io/f/mojvqkqj" method="POST">
+        <input class="modalInput" type="email" name="email" placeholder="you@email.com" required />
+        <input type="hidden" name="source" value="dimensionalscripture.com popup" />
+        <button class="btn btnPrimary" type="submit">Sign up</button>
+      </form>
+
+      <div id="updatesSuccess" class="modalSuccess" hidden>
+        You’re in. Check your inbox soon.
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO + PAGE -->
+  <main class="hero">
+    <div class="heroBg"></div>
+    <div class="heroOverlay"></div>
+
+    <div class="container heroContent">
+      <div class="heroCard">
+        <div class="badge"><span class="spark"></span> Manuscript in development</div>
+
+        <h1 class="scriptTitle"><span class="ink">Dimensional Scripture</span></h1>
+
+        <p class="heroLine">
+          What if Scripture was describing reality more accurately than modern materialism?
+        </p>
+
+        <p class="heroSub">
+          A research-driven examination of consciousness, dimensional reality, and the biblical text.
+          Built on sources and argument, not spiritual marketing.
+        </p>
+
+        <div class="heroActions">
+          <a class="btn btnPrimary" href="#get">Coming Soon</a>
+          <a class="btn" href="#about">Learn More</a>
+          <a class="btn" href="#" data-open-updates>Sign up for updates</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section id="about" class="block">
+      <div class="card">
+        <div class="kicker">The thesis</div>
+        <h2>Scripture, read as description</h2>
+        <p>
+          This project argues that strict materialism cannot account for consciousness or the full range of human experience.
+          It proposes that the biblical text reflects a consistent worldview of layered reality, and that modern research
+          increasingly echoes assumptions the text already contains.
+        </p>
+        <p>
+          This does not attempt to prove theology with science. It examines where their descriptions converge.
+        </p>
+      </div>
+    </section>
+
+    <!-- AUTHOR -->
+    <section id="author" class="block">
+      <div class="card">
+        <div class="kicker">About the author</div>
+        <h2>Ada Nestor</h2>
+        <p>
+          Ada Nestor is an independent writer and radio host focused on narrative, institutions, and the collisions
+          between lived experience and official explanations. <em>Dimensional Scripture</em> is her work-in-progress manuscript
+          examining consciousness, dimensional reality, and the biblical text through a research-driven lens.
+        </p>
+      </div>
+    </section>
+
+    <!-- LATEST -->
+    <section id="latest" class="block">
+      <div class="card">
+        <div class="kicker">Latest writing</div>
+        <h2>Follow the work as it evolves</h2>
+        <p>
+          While much of my publicly published work has leaned political, this project comes from a different place.
+          <em>Dimensional Scripture</em> reflects questions and lines of inquiry I have been preoccupied with for years,
+          independent of current events. As the manuscript develops, I publish excerpts, research notes, and exploratory essays
+          on Substack.
+        </p>
+        <div class="social-simple">
+          <a href="https://substack.com/@adanestorwc?utm_source=share&utm_medium=android&r=mzw1v" target="_blank" rel="noopener">
+            <img src="/assets/Substack.jpg" alt="Substack" />
+            Read on Substack
+          </a>
+          <a href="https://x.com/DimScripture" target="_blank" rel="noopener">
+            <img src="/assets/X.jpg" alt="X" />
+            Follow on X
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- GET THE BOOK -->
+    <section id="get" class="block">
+      <div class="card">
+        <div class="kicker">Get the book</div>
+        <h2>Coming soon</h2>
+        <p>
+          This page will be updated with release details, purchase links, and early-reader material as the manuscript approaches publication.
+        </p>
+        <div class="heroActions" style="justify-content:flex-start;">
+          <a class="btn btnPrimary" href="https://x.com/DimScripture" target="_blank" rel="noopener">Follow for release updates</a>
+          <a class="btn" href="https://substack.com/@adanestorwc?utm_source=share&utm_medium=android&r=mzw1v" target="_blank" rel="noopener">Read updates on Substack</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © Dimensional Scripture. Research project and forthcoming publication.
+    </footer>
+  </main>
+
+  <script>
+    (function(){
+      // Mobile menu
+      const btn = document.getElementById('menuBtn');
+      const menu = document.getElementById('mobileMenu');
+
+      function closeMenu(){
+        if (!menu || !btn) return;
+        menu.hidden = true;
+        btn.setAttribute('aria-expanded', 'false');
+      }
+
+      function toggleMenu(){
+        if (!menu || !btn) return;
+        const willOpen = menu.hidden;
+        menu.hidden = !willOpen;
+        btn.setAttribute('aria-expanded', String(willOpen));
+      }
+
+      if (btn && menu){
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          toggleMenu();
+        });
+
+        document.addEventListener('click', closeMenu);
+
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') closeMenu();
+        });
+
+        menu.addEventListener('click', (e) => {
+          const a = e.target.closest('a');
+          if (a) closeMenu();
+        });
+      }
+
+      // Updates modal
+      const modal = document.getElementById('updatesModal');
+      const success = document.getElementById('updatesSuccess');
+      const form = document.getElementById('updatesForm');
+
+      function openModal(){
+        if (!modal) return;
+        modal.classList.add('isOpen');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal(){
+        if (!modal || !form || !success) return;
+        modal.classList.remove('isOpen');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        success.hidden = true;
+        form.hidden = false;
+        form.reset();
+      }
+
+      document.addEventListener('click', (e) => {
+        const openBtn = e.target.closest('[data-open-updates]');
+        const closeBtn = e.target.closest('[data-close="true"]');
+
+        if (openBtn){
+          e.preventDefault();
+          openModal();
+        }
+        if (closeBtn){
+          e.preventDefault();
+          closeModal();
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal && modal.classList.contains('isOpen')) closeModal();
+      });
+
+      if (form){
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const action = form.getAttribute('action');
+          const data = new FormData(form);
+
+          try{
+            const res = await fetch(action, {
+              method: 'POST',
+              body: data,
+              headers: { 'Accept': 'application/json' }
+            });
+
+            if(res.ok){
+              form.hidden = true;
+              success.hidden = false;
+            } else {
+              alert('Something went wrong. Try again.');
+            }
+          } catch(err){
+            alert('Network error. Try again.');
+          }
+        });
+      }
+
+      // Auto-popup once per visitor
+      const key = 'ds_updates_popup_seen';
+      if (!localStorage.getItem(key)) {
+        setTimeout(() => {
+          openModal();
+          localStorage.setItem(key, '1');
+        }, 1800);
+      }
+    })();
+  </script>
+</body>
+</html>
