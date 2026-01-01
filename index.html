@@ -296,9 +296,188 @@
 .heroBg, .heroOverlay { z-index: 0; }
 .heroContent { position: relative; z-index: 2; }
 section.block, footer { position: relative; z-index: 2; }
+/* Modal */
+.modal{ position: fixed; inset: 0; display:none; z-index: 1000; }
+.modal.isOpen{ display:block; }
+.modalBackdrop{
+  position:absolute; inset:0;
+  background: rgba(0,0,0,.65);
+  backdrop-filter: blur(6px);
+}
+.modalCard{
+  position: relative;
+  max-width: 560px;
+  margin: 10vh auto 0;
+  background: rgba(10,10,16,.85);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  padding: 18px;
+}
+.modalHeader{
+  display:flex;
+  justify-content:space-between;
+  gap: 12px;
+  align-items:flex-start;
+}
+.modalKicker{
+  font-family: Cinzel, serif;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--accent2);
+  font-size: 12px;
+}
+.modalTitle{
+  font-family: Cinzel, serif;
+  font-size: 22px;
+  color: var(--accent);
+  margin-top: 6px;
+}
+.modalClose{
+  border: 1px solid var(--border);
+  background: rgba(10,10,16,.55);
+  color: var(--text);
+  border-radius: 12px;
+  padding: 8px 10px;
+  cursor: pointer;
+}
+.modalText{
+  margin: 12px 0 14px;
+  color: var(--muted);
+  line-height: 1.7;
+  font-size: 15px;
+}
+.modalForm{
+  display:flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.modalInput{
+  flex: 1 1 240px;
+  padding: 12px 12px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: rgba(10,10,16,.55);
+  color: var(--text);
+  outline: none;
+}
+.modalSuccess{
+  margin-top: 12px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(83,255,155,.35);
+  background: rgba(83,255,155,.10);
+  color: var(--text);
+}
+@media (max-width: 680px){
+  .modalCard{ margin: 12vh 14px 0; }
+}
+    
   </style>
 </head>
+<!-- Updates Popup -->
+<div id="updatesModal" class="modal" aria-hidden="true">
+  <div class="modalBackdrop" data-close="true"></div>
 
+  <div class="modalCard" role="dialog" aria-modal="true" aria-labelledby="updatesTitle">
+    <div class="modalHeader">
+      <div>
+        <div class="modalKicker">Updates</div>
+        <div id="updatesTitle" class="modalTitle">Get new excerpts + release news</div>
+      </div>
+      <button class="modalClose" type="button" data-close="true" aria-label="Close">✕</button>
+    </div>
+
+    <p class="modalText">
+      Drop your email and you’ll get periodic updates as the manuscript develops.
+      No spam. Unsubscribe any time.
+    </p>
+
+    <form id="updatesForm" class="modalForm" action="https://formspree.io/f/mojvqkqj" method="POST">
+      <input class="modalInput" type="email" name="email" placeholder="you@email.com" required />
+      <input type="hidden" name="source" value="dimensionalscripture.com popup" />
+      <button class="btn btnPrimary" type="submit">Sign up</button>
+    </form>
+
+    <div id="updatesSuccess" class="modalSuccess" hidden>
+      You’re in. Check your inbox soon.
+    </div>
+  </div>
+</div>
+
+<script>
+  (function(){
+    const modal = document.getElementById('updatesModal');
+    const success = document.getElementById('updatesSuccess');
+    const form = document.getElementById('updatesForm');
+
+    function openModal(){
+      modal.classList.add('isOpen');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal(){
+      modal.classList.remove('isOpen');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      success.hidden = true;
+      form.hidden = false;
+      form.reset();
+    }
+
+    // Open from any element with data-open-updates
+    document.addEventListener('click', (e) => {
+      const t = e.target;
+      if (t && t.closest && t.closest('[data-open-updates]')) {
+        e.preventDefault();
+        openModal();
+      }
+      if (t && t.closest && t.closest('[data-close="true"]')) {
+        e.preventDefault();
+        closeModal();
+      }
+    });
+
+    // ESC to close
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('isOpen')) closeModal();
+    });
+
+    // Intercept submit so user sees success without leaving page
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const action = form.getAttribute('action');
+      const data = new FormData(form);
+
+      try{
+        const res = await fetch(action, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if(res.ok){
+          form.hidden = true;
+          success.hidden = false;
+        } else {
+          alert('Something went wrong. Try again.');
+        }
+      } catch(err){
+        alert('Network error. Try again.');
+      }
+    });
+
+    // Optional: auto-popup once per visitor
+    const key = 'ds_updates_popup_seen';
+    if (!localStorage.getItem(key)) {
+      setTimeout(() => {
+        openModal();
+        localStorage.setItem(key, '1');
+      }, 1800);
+    }
+  })();
+</script>
+  
 <body>
   <header class="nav">
   <div class="container">
