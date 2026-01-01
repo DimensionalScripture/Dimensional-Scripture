@@ -59,7 +59,41 @@
       align-items:center;
       justify-content:space-between;
       gap: 12px;
+      padding: 10px 0;
     }
+
+ /* Mobile nav: allow horizontal scroll instead of clipping */
+.navRight{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  max-width: 60vw;          /* keeps brand visible */
+  padding-bottom: 6px;      /* space so scroll bar doesn’t overlap */
+}
+
+.navRight::-webkit-scrollbar{ height: 6px; }
+.navRight::-webkit-scrollbar-thumb{
+  background: rgba(255,255,255,.14);
+  border-radius: 999px;
+}
+
+/* Don’t force nowrap on mobile buttons */
+.btn{ white-space: nowrap; }
+
+/* Brand should not shrink */
+.brand{ flex: 0 0 auto; }
+
+/* Small screens: tighten spacing + give more room to navRight */
+@media (max-width: 680px){
+  .container{ padding: 0 12px; }
+  .navInner{ gap: 8px; }
+  .navRight{ max-width: 70vw; }
+  .btn{ padding: 9px 12px; border-radius: 999px; }
+  .pill{ display: none; }  /* your tagline pill is what steals space */
+}   
 
     .brand{
       display:flex;
